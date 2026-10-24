@@ -6,10 +6,7 @@
         {
             "label": "Build",
             "type": "shell",
-            "command": "make",
-            "options": {
-                "cwd": "${fileDirname}"
-            },
+            "command": "powershell -NoProfile -File ${workspaceFolder}/utils/vsmake.ps1 ${file}",
             "problemMatcher": [
                 "$gcc"
             ],
@@ -21,37 +18,25 @@
         {
             "label": "Clean",
             "type": "shell",
-            "command": "make clean",
-            "options": {
-                "cwd": "${fileDirname}"
-            },
+            "command": "powershell -NoProfile -File ${workspaceFolder}/utils/vsmake.ps1 ${file} clean",
             "problemMatcher": []
         },
         {
             "label": "Program (DFU)",
             "type": "shell",
-            "command": "make program-dfu",
-            "options": {
-                "cwd": "${fileDirname}"
-            },
+            "command": "powershell -NoProfile -File ${workspaceFolder}/utils/vsmake.ps1 ${file} program-dfu",
             "problemMatcher": []
         },
         {
             "label": "Program (Debug Probe)",
             "type": "shell",
-            "command": "make program",
-            "options": {
-                "cwd": "${fileDirname}"
-            },
+            "command": "powershell -NoProfile -File ${workspaceFolder}/utils/vsmake.ps1 ${file} program",
             "problemMatcher": []
         },
         {
             "label": "Re-Build",
             "type": "shell",
-            "command": "make clean && make",
-            "options": {
-                "cwd": "${fileDirname}"
-            },
+            "command": "powershell -NoProfile -File ${workspaceFolder}/utils/vsmake.ps1 ${file} clean; powershell -NoProfile -File ${workspaceFolder}/utils/vsmake.ps1 ${file}",
             "problemMatcher": [
                 "$gcc"
             ],
