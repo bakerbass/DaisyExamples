@@ -58,8 +58,8 @@ void AudioCallback(AudioHandle::InputBuffer  in,
     g_params.mix        = p[2];
     g_params.shelfHz    = 1500.f * powf(20000.f / 1500.f, p[3]);
     // g_params.predelay   = rbfx::FdnReverb::kMaxPre * p[4];
-    g_params.erGainDb   = (p[5] - 0.5f) * 18.f;
-    g_params.diffGainDb = -g_params.erGainDb;
+    g_params.erGainDb   = (p[5] - 0.5f) * 6.f; // 0<>1 -> -.5<>.5 -> -3<>3
+    g_params.diffGainDb = -g_params.erGainDb; // -3<>3
 
     g_params.chorusDepth = p[4]; //hw.expression.Value();
     g_params.chorusOn    = g_chorusOn;
