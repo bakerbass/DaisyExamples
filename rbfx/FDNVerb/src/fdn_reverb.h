@@ -169,7 +169,7 @@ class FdnReverb
         t_.shelfDb     = Clamp(p.shelfDb, -40.f, 0.f);
         t_.width       = Clamp(p.width, 0.f, kMaxWidth);
         t_.chorusLevel = Clamp(p.chorusLevel, 0.f, 1.f);
-        t_.chorusDepth = Clamp(p.chorusDepth, 0.f, 1.f);
+        t_.chorusDepth = Clamp(p.chorusDepth, 0.f, 100.f);
     }
 
     /** Process `n` samples. Input is summed to mono; output is stereo. */

@@ -58,10 +58,8 @@ void AudioCallback(AudioHandle::InputBuffer  in,
     g_params.mix        = p[2];
     g_params.shelfHz    = 1500.f * powf(20000.f / 1500.f, p[3]);
     // g_params.predelay   = rbfx::FdnReverb::kMaxPre * p[4];
-    g_params.erGainDb   = (p[5] - 0.5f) * 6.f; // 0<>1 -> -.5<>.5 -> -3<>3
-    g_params.diffGainDb = -g_params.erGainDb; // -3<>3
-
-    g_params.chorusDepth = p[4]; //hw.expression.Value();
+    g_params.chorusDepth = p[4] * 100.f; //hw.expression.Value();
+    g_params.chorusRate  = 10 * (p[5] + 0.0001); //0.1...~10Hz 
     g_params.chorusOn    = g_chorusOn;
     g_params.active      = g_reverbOn;
 
@@ -83,6 +81,8 @@ int main(void)
     hw.Init();
     hw.seed.SetAudioBlockSize(16);
     g_verb.Init(&g_mem, hw.seed.AudioSampleRate());
+    g_params.erGainDb   = 3.f;
+    g_params.diffGainDb = 0.f;
     g_verb.SetParams(g_params);
 
     hw.seed.StartAudio(AudioCallback);
