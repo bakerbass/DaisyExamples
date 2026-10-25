@@ -89,6 +89,8 @@
                 }
             }
         ]
-    }
+    },
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "cmake.sourceDirectory": "C:/Users/ryanb/OneDrive/Documents/MyProjects/MyDaisyProjects/DaisySP"
     
 }
